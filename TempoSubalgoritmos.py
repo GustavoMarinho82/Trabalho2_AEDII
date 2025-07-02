@@ -71,7 +71,7 @@ def mochilaFracionaria(itens, pesoMax):
             if (pesoRestante == 0):
                 break
 
-        elif (pesoRestante > 0):
+        else:
             fracao = pesoRestante / item["peso"]
             valorTotal += item["valor"] * fracao
 
