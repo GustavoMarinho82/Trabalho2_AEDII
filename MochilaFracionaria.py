@@ -43,6 +43,9 @@ def mergeSortValorPeso(itens):
 
 def mochilaFracionaria(itens, pesoMax):
 	# Imprime a configuração de itens que possui o maior valor total, respeitando o peso máximo
+	if (pesoMax <= 0):
+		return
+
 	pesoRestante = pesoMax
 	valorTotal = 0
 	
@@ -56,8 +59,11 @@ def mochilaFracionaria(itens, pesoMax):
 			pesoRestante -= item["peso"]
 			
 			print(" {} - Fracao: 1 | Valor: {} | Peso: {}".format(item["nome"], item["valor"], item["peso"]));
+			
+			if (pesoRestante == 0):
+				break
 
-		elif (pesoRestante > 0): # Essa condição serve para ignorar pesos negativos e para formatação do output 
+		else:
 			fracao = pesoRestante / item["peso"]
 			valorTotal += item["valor"] * fracao
 			

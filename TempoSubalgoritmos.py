@@ -34,7 +34,7 @@ def mergeSortValorPeso(itens):
 
         for i in range(0, len(sublistas), 2):
             if (i + 1 < len(sublistas)):
- novaLista.append(intercalarValorPeso(sublistas[i], sublistas[i + 1]))
+                novaLista.append(intercalarValorPeso(sublistas[i], sublistas[i + 1]))
 
             else:
                 novaLista.append(sublistas[i])
@@ -46,6 +46,8 @@ def mergeSortValorPeso(itens):
 
 def mochilaFracionaria(itens, pesoMax):
     # Imprime a configuração de itens que possui o maior valor total, respeitando o peso máximo
+    if (pesoMax <= 0):
+        return
 
     inicio_total = time.time()
 
@@ -65,8 +67,11 @@ def mochilaFracionaria(itens, pesoMax):
             pesoRestante -= item["peso"]
 
             print(" {} - Fracao: 1 | Valor: {} | Peso: {}".format(item["nome"], item["valor"], item["peso"]))
+			
+            if (pesoRestante == 0):
+                break
 
-        elif (pesoRestante > 0):  # Essa condição serve para ignorar pesos negativos e para formatação do output
+        elif (pesoRestante > 0):
             fracao = pesoRestante / item["peso"]
             valorTotal += item["valor"] * fracao
 
